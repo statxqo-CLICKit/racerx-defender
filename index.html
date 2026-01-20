@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Racer.X Defender</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      font-family: Arial, sans-serif;
+      color: #00ff88;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      font-size: 2rem;
+      border-bottom: 2px solid #00ff88;
+      box-shadow: 0 0 20px #00ff88;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    input, button {
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 12px;
+      border: 2px solid #00ff88;
+      background: #111;
+      color: #00ff88;
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    button:hover {
+      background: #00ff8840;
+    }
+
+    .results {
+      background: #0a0a0a;
+      border: 2px solid #00ff88;
+      border-radius: 12px;
+      padding: 1rem;
+      min-height: 80px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>Racer.X Defender</header>
+
+  <div class="container">
+    <input id="wallet" placeholder="Enter Wallet Address (0x...)" />
+
+    <button onclick="scanWallet()">SCAN WALLET</button>
+
+    <div id="results" class="results">
+      Status: Waiting for scan...
+    </div>
+  </div>
+
+  <div class="footer">
+    Web3 Security Scanner · Frontend Demo
+  </div>
+
+  <script>
+    function scanWallet() {
+      const wallet = document.getElementById("wallet").value.trim();
+      const results = document.getElementById("results");
+
+      if (!wallet || !wallet.startsWith("0x")) {
+        results.innerHTML = "❌ Invalid wallet address.";
+        return;
+      }
+
+      results.innerHTML = `
+        ✅ Wallet format valid<br><br>
+        Ethereum: Ready<br>
+        BSC: Ready<br>
+        Polygon: Ready<br><br>
+        (Live data will be enabled via backend)
+      `;
+    }
+  </script>
+
+</body>
+</html>
